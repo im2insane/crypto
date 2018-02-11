@@ -1,29 +1,26 @@
 import requests
-import tkinter
-from tkinter import messagebox
+
+def openURL(coinName):
+    #https://api.coinmarketcap.com/v1/ticker/bitcoin/
+    try:
+        url = "https://api.coinmarketcap.com/v1/ticker/"+coinName+"/"
+        print(url)
+        r = requests.get(url)
+        data = r.json()
+    except:
+        pass
+
+    return data
+
+def getData(coinName):
+    currLst = openURL(coinName)
+
+    return currLst[0]
 
 
-# coins = dict()
-#
-# def openURL():
-#     url = "https://api.coinmarketcap.com/v1/ticker/?limit=10"
-#     r = requests.get(url)
-#     data = r.json()
-#
-#     return data
-#
-# def populateDict(data):
-#     dictOfCoins = dict()
-#     for id in data:
-#         dictOfCoins[id['id']] = id
-#
-#     return dictOfCoins
-#
-# def getData(coinName):
-#
-#     coins = populateDict(openURL())
-#     print(coins[coinName])
-#
-# getData("bitcoin")
+def search(coinName):
+    currDict = getData(coinName)
 
+    return currDict
 
+print(search("bitcoin"))
