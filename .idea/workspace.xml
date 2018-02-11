@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="05e6a08f-1875-478d-bb16-4879b5dd5602" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/cryptoGUI.py" afterPath="$PROJECT_DIR$/cryptoGUI.py" />
-      <change beforePath="$PROJECT_DIR$/historical_data_lookup.py" afterPath="$PROJECT_DIR$/historical_data_lookup.py" />
-      <change beforePath="$PROJECT_DIR$/lookup.py" afterPath="$PROJECT_DIR$/lookup.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="historical_data_lookup.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="historical_data_lookup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/historical_data_lookup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="20" column="11" lean-forward="true" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+            <state relative-caret-position="494">
+              <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -37,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cryptoGUI.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cryptoGUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cryptoGUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="555">
+              <caret line="531" column="29" lean-forward="true" selection-start-line="531" selection-start-column="29" selection-end-line="531" selection-end-column="29" />
               <folding>
                 <element signature="e#136#146#0" expanded="true" />
               </folding>
@@ -86,12 +84,12 @@
       <list>
         <option value="$PROJECT_DIR$/cryptoGUI_support.py" />
         <option value="$PROJECT_DIR$/historical_data_lookup.py" />
-        <option value="$PROJECT_DIR$/cryptoGUI.py" />
         <option value="$PROJECT_DIR$/lookup.py" />
+        <option value="$PROJECT_DIR$/cryptoGUI.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1662" />
     <option name="y" value="-21" />
     <option name="width" value="1400" />
@@ -230,7 +228,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="3866" height="2186" extended-state="6" />
+    <frame x="-13" y="-13" width="3866" height="2186" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12109375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -284,22 +282,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cryptoGUI.py">
+    <entry file="file://$PROJECT_DIR$/historical_data_lookup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="494">
+          <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
           <folding>
-            <element signature="e#136#146#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/historical_data_lookup.py">
+    <entry file="file://$PROJECT_DIR$/cryptoGUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="20" column="11" lean-forward="true" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        <state relative-caret-position="555">
+          <caret line="531" column="29" lean-forward="true" selection-start-line="531" selection-start-column="29" selection-end-line="531" selection-end-column="29" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#136#146#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -292,7 +292,7 @@ class Crypto_Lookup:
 
         self.test_Total_supply = Text(self.label_total_supp)
         self.test_Total_supply.place(relx=0.01, rely=0.1, relheight=0.70
-                , relwidth=.75)
+                , relwidth=.90)
         self.test_Total_supply.configure(background="#D9D9D9")
         self.test_Total_supply.configure(borderwidth="0")
         self.test_Total_supply.configure(font=font10)
@@ -530,13 +530,19 @@ class Crypto_Lookup:
     def showChange1h(self,currDict):
         str = currDict['percent_change_1h']
         floatStr = float(str)
+        print(floatStr)
 
         if floatStr < 0:
-            self.changeBackgroundColor(self.label_Changed_1hr,"#FF0000")
-            self.changeBackgroundColor(self.text_changed_1hr, "#FF0000")
+            self.text_changed_1hr.configure(background="#FF0000")
+            self.label_Changed_1hr.configure(background="#FF0000")
+
+            # self.changeBackgroundColor(self.label_Changed_1hr,"#FF0000")
+            # self.changeBackgroundColor(self.text_changed_1hr, "#FF0000")
         elif floatStr > 0:
-            self.changeBackgroundColor(self.label_Changed_1hr,"#00FF00")
-            self.changeBackgroundColor(self.text_changed_1hr, "#00FF00")
+            self.text_changed_1hr.configure(background="#00FF00")
+            self.label_Changed_1hr.configure(background="#00FF00")
+            # self.changeBackgroundColor(self.label_Changed_1hr,"#00FF00")
+            # self.changeBackgroundColor(self.text_changed_1hr, "#00FF00")
         else:
             pass
 
@@ -547,6 +553,7 @@ class Crypto_Lookup:
         str = currDict['percent_change_24h']
 
         floatStr = float(str)
+        print(floatStr)
 
         if floatStr < 0:
             self.changeBackgroundColor(self.label_Changed_24hr,"#FF0000")
@@ -577,7 +584,10 @@ class Crypto_Lookup:
 
     def showIndex(self,index):
         index = str(index)
-        self.text_index.insert(END,index)
+        if(self.text_index.get(END)!=None):
+            self.text_index.insert(END, index + '%')
+        else:
+            pass
 
     def formatStr(self,numStr):
         try:
