@@ -4,6 +4,7 @@
 # In conjunction with Tcl version 8.6
 #    Feb 10, 2018 10:52:00 PM
 import sys
+import requests
 import lookup
 
 try:
@@ -20,17 +21,12 @@ except ImportError:
 
 import cryptoGUI_support
 
-def test(top):
-    #top.label_Changed_1hr.configure(background="#000000")
-    pass
-
 def vp_start_gui():
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = Tk()
     top = Crypto_Lookup (root)
     cryptoGUI_support.init(root, top)
-    top.TFrame1.bind("<button_Confirm>", test(top))
 
     root.mainloop()
 
@@ -44,6 +40,10 @@ def create_Crypto_Lookup(root, *args, **kwargs):
     cryptoGUI_support.init(w, top, *args, **kwargs)
     return (w, top)
 
+def test(top):
+
+    top.label_Price_usd.configure(text='''work''')
+
 def destroy_Crypto_Lookup():
     global w
     w.destroy()
@@ -51,6 +51,7 @@ def destroy_Crypto_Lookup():
 
 
 class Crypto_Lookup:
+
     def __init__(self, top=None):
         '''This class configures and populates the toplevel window.
            top is the toplevel containing window.'''
@@ -72,7 +73,7 @@ class Crypto_Lookup:
         self.style.map('.',background=
             [('selected', _compcolor), ('active',_ana2color)])
 
-        top.geometry("643x656+417+19")
+        top.geometry("900x900+417+19")
         top.title("Crypto Lookup")
         top.configure(background="#ffffff")
         top.configure(highlightbackground="#d9d9d9")
@@ -94,10 +95,11 @@ class Crypto_Lookup:
         self.textBox_search.configure(width=254)
         self.textBox_search.configure(wrap=WORD)
 
-        self.button_Confirm = ttk.Button(top)
+        self.button_Confirm = Button(top, command=self.buttonClick, text="Submit")
         self.button_Confirm.place(relx=0.45, rely=0.02, height=25, width=336)
         self.button_Confirm.configure(takefocus="")
         self.button_Confirm.configure(text='''Look Up''')
+        # #########################################################################
 
         self.container = ttk.Frame(top)
         self.container.place(relx=0.02, rely=0.06, relheight=0.93, relwidth=0.97)
@@ -233,8 +235,8 @@ class Crypto_Lookup:
         self.label_mkt_cap.configure(width=270)
 
         self.text_Mkt_cap = Text(self.label_mkt_cap)
-        self.text_Mkt_cap.place(relx=0.44, rely=0.35, relheight=0.52
-                , relwidth=0.46)
+        self.text_Mkt_cap.place(relx=0.01, rely=0.24, relheight=0.61
+                , relwidth=0.75)
         self.text_Mkt_cap.configure(background="#D9D9D9")
         self.text_Mkt_cap.configure(borderwidth="0")
         self.text_Mkt_cap.configure(font=font10)
@@ -261,8 +263,8 @@ class Crypto_Lookup:
         self.label_avail_supply.configure(width=300)
 
         self.text_Aviable_Supply = Text(self.label_avail_supply)
-        self.text_Aviable_Supply.place(relx=0.43, rely=0.35, relheight=0.52
-                , relwidth=0.51)
+        self.text_Aviable_Supply.place(relx=0.01, rely=0.24, relheight=0.61
+                , relwidth=0.75)
         self.text_Aviable_Supply.configure(background="#D9D9D9")
         self.text_Aviable_Supply.configure(borderwidth="0")
         self.text_Aviable_Supply.configure(font=font10)
@@ -289,8 +291,8 @@ class Crypto_Lookup:
         self.label_total_supp.configure(width=270)
 
         self.test_Total_supply = Text(self.label_total_supp)
-        self.test_Total_supply.place(relx=0.44, rely=0.35, relheight=0.4
-                , relwidth=0.46)
+        self.test_Total_supply.place(relx=0.01, rely=0.24, relheight=0.61
+                , relwidth=0.75)
         self.test_Total_supply.configure(background="#D9D9D9")
         self.test_Total_supply.configure(borderwidth="0")
         self.test_Total_supply.configure(font=font10)
@@ -317,8 +319,8 @@ class Crypto_Lookup:
         self.label_Max_supp.configure(width=300)
 
         self.test_max_supply = Text(self.label_Max_supp)
-        self.test_max_supply.place(relx=0.43, rely=0.24, relheight=0.61
-                , relwidth=0.47)
+        self.test_max_supply.place(relx=0.01, rely=0.24, relheight=0.61
+                , relwidth=0.75)
         self.test_max_supply.configure(background="#D9D9D9")
         self.test_max_supply.configure(borderwidth="0")
         self.test_max_supply.configure(font=font10)
@@ -388,7 +390,7 @@ class Crypto_Lookup:
         self.text_changed_24hr.configure(wrap=WORD)
 
         self.label_Changed_7d = LabelFrame(self.container)
-        self.label_Changed_7d.place(relx=0.24, rely=0.82, relheight=0.14
+        self.label_Changed_7d.place(relx=0.24, rely=0.82, relheight=0.19
                 , relwidth=0.48)
         self.label_Changed_7d.configure(borderwidth="1")
         self.label_Changed_7d.configure(font=font9)
@@ -405,7 +407,7 @@ class Crypto_Lookup:
                 , relwidth=0.47)
         self.text_changed_7D.configure(background="#D9D9D9")
         self.text_changed_7D.configure(borderwidth="0")
-        self.text_changed_7D.configure(font=font10)
+        self.text_changed_7D.configure(font=("Arial", 24))
         self.text_changed_7D.configure(foreground="black")
         self.text_changed_7D.configure(highlightbackground="#d9d9d9")
         self.text_changed_7D.configure(highlightcolor="black")
@@ -413,12 +415,113 @@ class Crypto_Lookup:
         self.text_changed_7D.configure(selectbackground="#c4c4c4")
         self.text_changed_7D.configure(selectforeground="black")
         self.text_changed_7D.configure(width=142)
-        self.text_changed_7D.configure(wrap=WORD)
+        self.text_changed_7D.configure(wrap=NONE)
+
+    def buttonClick(self):
+        self.clearText()
+        lookupStr = str(self.textBox_search.get(1.0,'end-1c'))
+        print(lookupStr)
+        currDict = lookup.openURL(lookupStr)
+
+        self.showName(currDict)
+        self.showSymbol(currDict)
+        self.showRank(currDict)
+        self.showPrice(currDict)
+        self.showMktCap(currDict)
+        self.showAvailableSupply(currDict)
+        self.showTotalSupply(currDict)
+        self.showMaxSupply(currDict)
+        self.showChange1h(currDict)
+        self.showChange24h(currDict)
+        self.showChange7d(currDict)
+
+
+        # id: "ethereum",
+        # name: "Ethereum",
+        # symbol: "ETH",
+        # rank: "2",
+        # price_usd: "831.709",
+        # price_btc: "0.101299",
+        # 24
+        # h_volume_usd: "2753290000.0",
+        # market_cap_usd: "81124260590.0",
+        # available_supply: "97539236.0",
+        # total_supply: "97539236.0",
+        # max_supply: null,
+        # percent_change_1h: "-1.51",
+        # percent_change_24h: "-7.07",
+        # percent_change_7d: "-13.29",
+        # last_updated: "1518313152"
+
+    def clearText(self):
+        index1 = 0.0
+        index2 = END
+
+        self.text_name.replace(index1,index2," ")
+
+        self.text_symbol.replace(index1,index2," ")
+        self.text_rank.replace(index1,index2, " ")
+        self.text_price_usd.replace(index1,index2," ")
+        self.text_Mkt_cap.replace(index1,index2,"")
+        self.text_Aviable_Supply.replace(index1,index2," ")
+        self.test_Total_supply.replace(index1,index2, " ")
+        self.test_max_supply.replace(index1,index2," ")
+        self.text_changed_1hr.replace(index1,index2," ")
+        self.text_changed_24hr.replace(index1,index2," ")
+        self.text_changed_7D.replace(index1,index2," ")
+
+    def showName(self,currDict):
+        str = currDict['name']
+        self.text_name.insert(END, str)
+
+    def showSymbol(self,currDict):
+        str = currDict['symbol']
+        self.text_symbol.insert(END,str)
+
+    def showRank(self,currDict):
+        str = currDict['rank']
+        self.text_rank.insert(END, str)
+
+    def showPrice(self,currDict):
+        str = currDict['price_usd']
+
+    def showMktCap(self,currDict):
+        str = currDict['market_cap_usd']
+        self.text_Mkt_cap.insert(END,str)
+
+    def showAvailableSupply(self,currDict):
+        str = currDict['available_supply']
+
+        self.text_Aviable_Supply.insert(END,str)
+
+
+    def showTotalSupply(self,currDict):
+        str = currDict['total_supply']
+
+        self.test_Total_supply.insert(END, str)
+
+    def showMaxSupply(self,currDict):
+        str = currDict['max_supply']
+
+        self.test_max_supply.insert(END,currDict['max_supply'])
+
+    def showChange1h(self,currDict):
+        str = currDict['percent_change_1h']
+
+        self.text_changed_1hr.insert(END,str)
+
+    def showChange24h(self,currDict):
+        str = currDict['percent_change_24h']
+
+        self.text_changed_24hr.insert(END, str)
+
+    def showChange7d(self,currDict):
+        str = currDict['percent_change_7d']
+
+        self.text_changed_7D.insert(END,str)
+
 
 
 
 if __name__ == '__main__':
     vp_start_gui()
-
-
-

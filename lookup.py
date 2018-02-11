@@ -2,22 +2,14 @@ import requests
 
 def openURL(coinName):
     #https://api.coinmarketcap.com/v1/ticker/bitcoin/
+    print(coinName,":")
     try:
         url = "https://api.coinmarketcap.com/v1/ticker/"+coinName+"/"
         r = requests.get(url)
         data = r.json()
+        print("got url")
     except:
         pass
 
-    return data
-
-def getData(coinName):
-    currLst = openURL(coinName)
-
-    return currLst[0]
-
-
-def search(coinName):
-    currDict = getData(coinName)
-
-    return currDict
+    currLst = data[0]
+    return currLst
