@@ -27,6 +27,7 @@ def vp_start_gui():
     root = Tk()
     top = Crypto_Lookup (root)
     cryptoGUI_support.init(root, top)
+    top.buttonClick()
 
     root.mainloop()
 
@@ -73,7 +74,7 @@ class Crypto_Lookup:
         self.style.map('.',background=
             [('selected', _compcolor), ('active',_ana2color)])
 
-        top.geometry("900x900+417+19")
+        top.geometry("800x1000+417+19")
         top.title("Crypto Lookup")
         top.configure(background="#ffffff")
         top.configure(highlightbackground="#d9d9d9")
@@ -81,7 +82,7 @@ class Crypto_Lookup:
 
 
 
-        self.textBox_search = Text(top)
+        self.textBox_search = Entry(top)
         self.textBox_search.place(relx=0.02, rely=0.02, relheight=0.04
                 , relwidth=0.4)
         self.textBox_search.configure(background="white")
@@ -93,7 +94,6 @@ class Crypto_Lookup:
         self.textBox_search.configure(selectbackground="#000000")
         self.textBox_search.configure(selectforeground="black")
         self.textBox_search.configure(width=254)
-        self.textBox_search.configure(wrap=WORD)
 
         self.button_Confirm = Button(top, command=self.buttonClick, text="Submit")
         self.button_Confirm.place(relx=0.45, rely=0.02, height=25, width=336)
@@ -123,7 +123,7 @@ class Crypto_Lookup:
         self.label_name.configure(width=270)
 
         self.text_name = Text(self.label_name)
-        self.text_name.place(relx=0.44, rely=0.27, relheight=0.59, relwidth=0.5)
+        self.text_name.place(relx=0.24, rely=0.27, relheight=0.59, relwidth=0.5)
         self.text_name.configure(background="#D9D9D9")
         self.text_name.configure(borderwidth="0")
         self.text_name.configure(font=font10)
@@ -151,7 +151,7 @@ class Crypto_Lookup:
         self.label_symbol.configure(width=300)
 
         self.text_symbol = Text(self.label_symbol)
-        self.text_symbol.place(relx=0.43, rely=0.27, relheight=0.59
+        self.text_symbol.place(relx=0.23, rely=0.27, relheight=0.59
                 , relwidth=0.45)
         self.text_symbol.configure(background="#D9D9D9")
         self.text_symbol.configure(borderwidth="0")
@@ -179,7 +179,7 @@ class Crypto_Lookup:
         self.label_rank.configure(width=270)
 
         self.text_rank = Text(self.label_rank)
-        self.text_rank.place(relx=0.44, rely=0.24, relheight=0.64, relwidth=0.53)
+        self.text_rank.place(relx=0.24, rely=0.24, relheight=0.64, relwidth=0.53)
 
         self.text_rank.configure(background="#D9D9D9")
         self.text_rank.configure(borderwidth="0")
@@ -200,14 +200,14 @@ class Crypto_Lookup:
         self.label_Price_usd.configure(font=font9)
         self.label_Price_usd.configure(foreground="black")
         self.label_Price_usd.configure(relief=FLAT)
-        self.label_Price_usd.configure(text='''Price_usd''')
+        self.label_Price_usd.configure(text='''Price in Dollars''')
         self.label_Price_usd.configure(background="#d9d9d9")
         self.label_Price_usd.configure(highlightbackground="#d9d9d9")
         self.label_Price_usd.configure(highlightcolor="black")
         self.label_Price_usd.configure(width=300)
 
         self.text_price_usd = Text(self.label_Price_usd)
-        self.text_price_usd.place(relx=0.43, rely=0.24, relheight=0.52
+        self.text_price_usd.place(relx=0.23, rely=0.24, relheight=0.52
                 , relwidth=0.55)
         self.text_price_usd.configure(background="#D9D9D9")
         self.text_price_usd.configure(borderwidth="0")
@@ -223,7 +223,7 @@ class Crypto_Lookup:
 
         self.label_mkt_cap = LabelFrame(self.container)
         self.label_mkt_cap.place(relx=0.02, rely=0.33, relheight=0.14
-                , relwidth=0.43)
+                , relwidth=0.70)
         self.label_mkt_cap.configure(borderwidth="1")
         self.label_mkt_cap.configure(font=font9)
         self.label_mkt_cap.configure(foreground="black")
@@ -235,7 +235,7 @@ class Crypto_Lookup:
         self.label_mkt_cap.configure(width=270)
 
         self.text_Mkt_cap = Text(self.label_mkt_cap)
-        self.text_Mkt_cap.place(relx=0.01, rely=0.24, relheight=0.61
+        self.text_Mkt_cap.place(relx=0.01, rely=0.15, relheight=0.80
                 , relwidth=0.75)
         self.text_Mkt_cap.configure(background="#D9D9D9")
         self.text_Mkt_cap.configure(borderwidth="0")
@@ -246,7 +246,7 @@ class Crypto_Lookup:
         self.text_Mkt_cap.configure(insertbackground="black")
         self.text_Mkt_cap.configure(selectbackground="#c4c4c4")
         self.text_Mkt_cap.configure(selectforeground="black")
-        self.text_Mkt_cap.configure(width=124)
+        self.text_Mkt_cap.configure(width=150)
         self.text_Mkt_cap.configure(wrap=WORD)
 
         self.label_avail_supply = LabelFrame(self.container)
@@ -256,14 +256,14 @@ class Crypto_Lookup:
         self.label_avail_supply.configure(font=font9)
         self.label_avail_supply.configure(foreground="black")
         self.label_avail_supply.configure(relief=FLAT)
-        self.label_avail_supply.configure(text='''Aviable Supply''')
+        self.label_avail_supply.configure(text='''Available Supply''')
         self.label_avail_supply.configure(background="#d9d9d9")
         self.label_avail_supply.configure(highlightbackground="#d9d9d9")
         self.label_avail_supply.configure(highlightcolor="black")
         self.label_avail_supply.configure(width=300)
 
         self.text_Aviable_Supply = Text(self.label_avail_supply)
-        self.text_Aviable_Supply.place(relx=0.01, rely=0.24, relheight=0.61
+        self.text_Aviable_Supply.place(relx=0.01, rely=0.1, relheight=0.80
                 , relwidth=0.75)
         self.text_Aviable_Supply.configure(background="#D9D9D9")
         self.text_Aviable_Supply.configure(borderwidth="0")
@@ -278,21 +278,21 @@ class Crypto_Lookup:
         self.text_Aviable_Supply.configure(wrap=WORD)
 
         self.label_total_supp = LabelFrame(self.container)
-        self.label_total_supp.place(relx=0.02, rely=0.49, relheight=0.14
+        self.label_total_supp.place(relx=0.02, rely=0.5, relheight=0.14
                 , relwidth=0.43)
         self.label_total_supp.configure(borderwidth="1")
         self.label_total_supp.configure(font=font9)
         self.label_total_supp.configure(foreground="black")
         self.label_total_supp.configure(relief=FLAT)
         self.label_total_supp.configure(text='''Total Supply''')
-        self.label_total_supp.configure(background="#d9d9d9")
+        self.label_total_supp.configure(background="#D9D9D9")
         self.label_total_supp.configure(highlightbackground="#d9d9d9")
         self.label_total_supp.configure(highlightcolor="black")
         self.label_total_supp.configure(width=270)
 
         self.test_Total_supply = Text(self.label_total_supp)
-        self.test_Total_supply.place(relx=0.01, rely=0.24, relheight=0.61
-                , relwidth=0.75)
+        self.test_Total_supply.place(relx=0.01, rely=0.1, relheight=0.70
+                , relwidth=.75)
         self.test_Total_supply.configure(background="#D9D9D9")
         self.test_Total_supply.configure(borderwidth="0")
         self.test_Total_supply.configure(font=font10)
@@ -302,8 +302,9 @@ class Crypto_Lookup:
         self.test_Total_supply.configure(insertbackground="black")
         self.test_Total_supply.configure(selectbackground="#c4c4c4")
         self.test_Total_supply.configure(selectforeground="black")
-        self.test_Total_supply.configure(width=124)
-        self.test_Total_supply.configure(wrap=WORD)
+        self.test_Total_supply.configure(width=300)
+        self.test_Total_supply.configure(height=300)
+        self.test_Total_supply.configure(wrap=CHAR)
 
         self.label_Max_supp = LabelFrame(self.container)
         self.label_Max_supp.place(relx=0.5, rely=0.49, relheight=0.14
@@ -319,7 +320,7 @@ class Crypto_Lookup:
         self.label_Max_supp.configure(width=300)
 
         self.test_max_supply = Text(self.label_Max_supp)
-        self.test_max_supply.place(relx=0.01, rely=0.24, relheight=0.61
+        self.test_max_supply.place(relx=0.01, rely=0.05, relheight=0.90
                 , relwidth=0.75)
         self.test_max_supply.configure(background="#D9D9D9")
         self.test_max_supply.configure(borderwidth="0")
@@ -334,7 +335,7 @@ class Crypto_Lookup:
         self.test_max_supply.configure(wrap=WORD)
 
         self.label_Changed_1hr = LabelFrame(self.container)
-        self.label_Changed_1hr.place(relx=0.02, rely=0.66, relheight=0.14
+        self.label_Changed_1hr.place(relx=0.02, rely=0.64, relheight=0.14
                 , relwidth=0.43)
         self.label_Changed_1hr.configure(borderwidth="1")
         self.label_Changed_1hr.configure(font=font9)
@@ -362,7 +363,7 @@ class Crypto_Lookup:
         self.text_changed_1hr.configure(wrap=WORD)
 
         self.label_Changed_24hr = LabelFrame(self.container)
-        self.label_Changed_24hr.place(relx=0.5, rely=0.66, relheight=0.14
+        self.label_Changed_24hr.place(relx=0.5, rely=0.64, relheight=0.14
                 , relwidth=0.48)
         self.label_Changed_24hr.configure(borderwidth="1")
         self.label_Changed_24hr.configure(font=font9)
@@ -375,7 +376,7 @@ class Crypto_Lookup:
         self.label_Changed_24hr.configure(width=300)
 
         self.text_changed_24hr = Text(self.label_Changed_24hr)
-        self.text_changed_24hr.place(relx=0.47, rely=0.26, relheight=0.61
+        self.text_changed_24hr.place(relx=0.47, rely=0.26, relheight=0.50
                 , relwidth=0.41)
         self.text_changed_24hr.configure(background="#D9D9D9")
         self.text_changed_24hr.configure(borderwidth="0")
@@ -390,7 +391,7 @@ class Crypto_Lookup:
         self.text_changed_24hr.configure(wrap=WORD)
 
         self.label_Changed_7d = LabelFrame(self.container)
-        self.label_Changed_7d.place(relx=0.24, rely=0.82, relheight=0.19
+        self.label_Changed_7d.place(relx=0.24, rely=0.87, relheight=0.10
                 , relwidth=0.48)
         self.label_Changed_7d.configure(borderwidth="1")
         self.label_Changed_7d.configure(font=font9)
@@ -403,7 +404,7 @@ class Crypto_Lookup:
         self.label_Changed_7d.configure(width=300)
 
         self.text_changed_7D = Text(self.label_Changed_7d)
-        self.text_changed_7D.place(relx=0.43, rely=0.38, relheight=0.49
+        self.text_changed_7D.place(relx=0.43, rely=0.01, relheight=0.75
                 , relwidth=0.47)
         self.text_changed_7D.configure(background="#D9D9D9")
         self.text_changed_7D.configure(borderwidth="0")
@@ -419,7 +420,7 @@ class Crypto_Lookup:
 
     def buttonClick(self):
         self.clearText()
-        lookupStr = str(self.textBox_search.get(1.0,'end-1c'))
+        lookupStr = str(self.textBox_search.get())
         print(lookupStr)
         currDict = lookup.openURL(lookupStr)
 
@@ -480,47 +481,106 @@ class Crypto_Lookup:
 
     def showRank(self,currDict):
         str = currDict['rank']
-        self.text_rank.insert(END, str)
+        self.text_rank.insert(END, str+ self.rankPostfix(str))
 
     def showPrice(self,currDict):
-        str = currDict['price_usd']
+        str = self.formatStr(currDict['price_usd'])
+
+        self.text_price_usd.insert(END,'$'+str)
 
     def showMktCap(self,currDict):
-        str = currDict['market_cap_usd']
-        self.text_Mkt_cap.insert(END,str)
+        str = self.formatStr(currDict['market_cap_usd'])
+        self.text_Mkt_cap.insert(END,'$'+str)
 
     def showAvailableSupply(self,currDict):
-        str = currDict['available_supply']
+        str = self.formatStr(currDict['available_supply'])
+        symbol = currDict['symbol']
 
-        self.text_Aviable_Supply.insert(END,str)
+        self.text_Aviable_Supply.insert(END,str + " " + symbol)
 
 
     def showTotalSupply(self,currDict):
-        str = currDict['total_supply']
+        str = self.formatStr(currDict['total_supply'])
+        symbol = currDict['symbol']
 
-        self.test_Total_supply.insert(END, str)
+        self.test_Total_supply.insert(END, str + " " + symbol)
 
     def showMaxSupply(self,currDict):
-        str = currDict['max_supply']
+        str = self.formatStr(currDict['max_supply'])
+        symbol = currDict['symbol']
 
-        self.test_max_supply.insert(END,currDict['max_supply'])
+        self.test_max_supply.insert(END,str + " " + symbol)
 
     def showChange1h(self,currDict):
         str = currDict['percent_change_1h']
+        floatStr = float(str)
 
-        self.text_changed_1hr.insert(END,str)
+        if floatStr < 0:
+            self.changeBackgroundColor(self.label_Changed_1hr,"#FF0000")
+            self.changeBackgroundColor(self.text_changed_1hr, "#FF0000")
+        elif floatStr > 0:
+            self.changeBackgroundColor(self.label_Changed_1hr,"#00FF00")
+            self.changeBackgroundColor(self.text_changed_1hr, "#00FF00")
+        else:
+            pass
+
+
+        self.text_changed_1hr.insert(END,str+'%')
 
     def showChange24h(self,currDict):
         str = currDict['percent_change_24h']
 
-        self.text_changed_24hr.insert(END, str)
+        floatStr = float(str)
+
+        if floatStr < 0:
+            self.changeBackgroundColor(self.label_Changed_24hr,"#FF0000")
+            self.changeBackgroundColor(self.text_changed_24hr, "#FF0000")
+        elif floatStr > 0:
+            self.changeBackgroundColor(self.label_Changed_1hr,"#00FF00")
+            self.changeBackgroundColor(self.text_changed_24hr, "#00FF00")
+        else:
+            pass
+
+        self.text_changed_24hr.insert(END, str+'%')
 
     def showChange7d(self,currDict):
         str = currDict['percent_change_7d']
 
-        self.text_changed_7D.insert(END,str)
+        floatStr = float(str)
 
+        if floatStr < 0:
+            self.changeBackgroundColor(self.label_Changed_7d,"#FF0000")
+            self.changeBackgroundColor(self.text_changed_7D, "#FF0000")
+        elif floatStr > 0:
+            self.changeBackgroundColor(self.label_Changed_7d,"#00FF00")
+            self.changeBackgroundColor(self.text_changed_7D, "#00FF00")
+        else:
+            pass
 
+        self.text_changed_7D.insert(END,str+'%')
+
+    def formatStr(self,numStr):
+        try:
+            numStr = float(numStr)
+            if numStr < 1:
+                return str(numStr)
+            numStr = "{0:,.0f}".format(numStr)
+        except TypeError:
+            return 'N/A'
+
+        return numStr
+
+    def rankPostfix(self,rank):
+        lst = ['st','nd','rd','th']
+        lastNum = int(rank[-1])
+        index = lastNum
+        try:
+            return lst[index-1]
+        except IndexError:
+            return lst[-1]
+
+    def changeBackgroundColor(self,widget,colorStr):
+        widget.configure(background=colorStr)
 
 
 if __name__ == '__main__':
