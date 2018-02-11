@@ -31,16 +31,12 @@ def getIndex(curr):
             tele.append(text)
 
     tables = tables[0]
-    print(tables[0][4])
     deviationLst = []
     for i in range(1,len(tables)-1):
         deviationLst.append(getDevLst(tables[i],tables[i+1]))
 
     dev = stdev(deviationLst)
-    print((days**.5)*dev)
 
+    finalDev = float((days**.5)*dev)
 
-
-
-
-getIndex("bitcoin")
+    return ('%.2f' % finalDev)

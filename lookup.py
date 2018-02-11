@@ -1,7 +1,7 @@
 import requests
 
 def openURL(coinName):
-    #https://api.coinmarketcap.com/v1/ticker/bitcoin/
+    #https://api.coinmarketcap.com/v1/ticker/dogecoin/
     try:
         url = "https://api.coinmarketcap.com/v1/ticker/"+coinName+"/"
         r = requests.get(url)

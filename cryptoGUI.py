@@ -336,7 +336,7 @@ class Crypto_Lookup:
 
         self.label_Changed_1hr = LabelFrame(self.container)
         self.label_Changed_1hr.place(relx=0.02, rely=0.64, relheight=0.14
-                , relwidth=0.43)
+                , relwidth=0.45)
         self.label_Changed_1hr.configure(borderwidth="1")
         self.label_Changed_1hr.configure(font=font9)
         self.label_Changed_1hr.configure(foreground="black")
@@ -391,7 +391,7 @@ class Crypto_Lookup:
         self.text_changed_24hr.configure(wrap=WORD)
 
         self.label_Changed_7d = LabelFrame(self.container)
-        self.label_Changed_7d.place(relx=0.24, rely=0.87, relheight=0.10
+        self.label_Changed_7d.place(relx=0.5, rely=0.8, relheight=0.15
                 , relwidth=0.48)
         self.label_Changed_7d.configure(borderwidth="1")
         self.label_Changed_7d.configure(font=font9)
@@ -418,11 +418,43 @@ class Crypto_Lookup:
         self.text_changed_7D.configure(width=142)
         self.text_changed_7D.configure(wrap=NONE)
 
+
+        self.label_index = LabelFrame(self.container)
+        self.label_index.place(relx=0.02, rely=0.8, relheight=0.15
+                , relwidth=0.45)
+        self.label_index.configure(borderwidth="1")
+        self.label_index.configure(font=font9)
+        self.label_index.configure(foreground="black")
+        self.label_index.configure(relief=FLAT)
+        self.label_index.configure(text='''Volitality Percentage''')
+        self.label_index.configure(background="#d9d9d9")
+        self.label_index.configure(highlightbackground="#d9d9d9")
+        self.label_index.configure(highlightcolor="black")
+        self.label_index.configure(width=300)
+
+
+        self.text_index = Text(self.label_index)
+        self.text_index .place(relx=0.20, rely=0.50, relheight=0.99
+                , relwidth=0.99)
+        self.text_index.configure(background="#D9D9D9")
+        self.text_index.configure(borderwidth="0")
+        self.text_index.configure(font=("Arial", 24))
+        self.text_index.configure(foreground="black")
+        self.text_index.configure(highlightbackground="#000000")
+        self.text_index.configure(highlightcolor="black")
+        self.text_index.configure(insertbackground="black")
+        self.text_index.configure(selectbackground="#c4c4c4")
+        self.text_index.configure(selectforeground="black")
+        self.text_index.configure(width=142)
+        self.text_index.configure(wrap=NONE)
+
     def buttonClick(self):
+        import historical_data_lookup
         self.clearText()
         lookupStr = str(self.textBox_search.get())
         print(lookupStr)
         currDict = lookup.openURL(lookupStr)
+        index = historical_data_lookup.getIndex(lookupStr)
 
         self.showName(currDict)
         self.showSymbol(currDict)
@@ -435,24 +467,7 @@ class Crypto_Lookup:
         self.showChange1h(currDict)
         self.showChange24h(currDict)
         self.showChange7d(currDict)
-
-
-        # id: "ethereum",
-        # name: "Ethereum",
-        # symbol: "ETH",
-        # rank: "2",
-        # price_usd: "831.709",
-        # price_btc: "0.101299",
-        # 24
-        # h_volume_usd: "2753290000.0",
-        # market_cap_usd: "81124260590.0",
-        # available_supply: "97539236.0",
-        # total_supply: "97539236.0",
-        # max_supply: null,
-        # percent_change_1h: "-1.51",
-        # percent_change_24h: "-7.07",
-        # percent_change_7d: "-13.29",
-        # last_updated: "1518313152"
+        self.showIndex(index)
 
     def clearText(self):
         index1 = 0.0
@@ -470,6 +485,7 @@ class Crypto_Lookup:
         self.text_changed_1hr.replace(index1,index2," ")
         self.text_changed_24hr.replace(index1,index2," ")
         self.text_changed_7D.replace(index1,index2," ")
+        self.text_index.replace(index1,index2," ")
 
     def showName(self,currDict):
         str = currDict['name']
@@ -558,6 +574,10 @@ class Crypto_Lookup:
             pass
 
         self.text_changed_7D.insert(END,str+'%')
+
+    def showIndex(self,index):
+        index = str(index)
+        self.text_index.insert(END,index)
 
     def formatStr(self,numStr):
         try:
