@@ -4,7 +4,6 @@ def openURL(coinName):
     #https://api.coinmarketcap.com/v1/ticker/bitcoin/
     try:
         url = "https://api.coinmarketcap.com/v1/ticker/"+coinName+"/"
-        print(url)
         r = requests.get(url)
         data = r.json()
     except:
@@ -22,5 +21,3 @@ def search(coinName):
     currDict = getData(coinName)
 
     return currDict
-
-print(search("bitcoin"))

@@ -4,6 +4,7 @@
 # In conjunction with Tcl version 8.6
 #    Feb 10, 2018 09:41:44 PM
 import sys
+import lookup
 
 try:
     from Tkinter import *
@@ -19,12 +20,18 @@ except ImportError:
 
 import cryptoGUI_support
 
+def test(top):
+    #top.label_Changed_1hr.configure(background="#000000")
+    pass
+
 def vp_start_gui():
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = Tk()
     top = Crypto_Lookup (root)
     cryptoGUI_support.init(root, top)
+    top.TFrame1.bind("<button_Confirm>", test(top))
+
     root.mainloop()
 
 w = None
@@ -222,9 +229,6 @@ class Crypto_Lookup:
         self.label_Changed_7d.configure(text='''Changed 7d''')
         self.label_Changed_7d.configure(background="#d9d9d9")
         self.label_Changed_7d.configure(width=300)
-
-
-
 
 
 
